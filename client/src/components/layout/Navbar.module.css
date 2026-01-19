@@ -32,6 +32,8 @@
 
 .logoImage {
     object-fit: contain;
+    height: 50px;
+    width: auto;
 }
 
 /* .scrolled .logo removed as no color change needed */
