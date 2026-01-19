@@ -1,0 +1,138 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.scrolled {
+    background: rgba(10, 10, 10, 0.85);
+    /* Dark background */
+    backdrop-filter: blur(12px);
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    object-fit: contain;
+}
+
+/* .scrolled .logo removed as no color change needed */
+
+.logoAccent {
+    color: var(--color-accent-orange);
+}
+
+.desktopMenu {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+}
+
+.navLink {
+    color: var(--color-white);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.scrolled .navLink {
+    color: var(--color-text-main);
+}
+
+.navLink:hover {
+    color: var(--color-accent-orange);
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent-orange);
+    transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+    width: 100%;
+}
+
+.mobileToggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.scrolled .mobileToggle {
+    color: var(--color-text-main);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-bg-surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.3s ease-in-out;
+    padding: 2rem;
+    z-index: 999;
+    /* Ensure it is behind the toggle but above simple content */
+}
+
+.mobileMenu.open {
+    right: 0;
+}
+
+.mobileNavLink {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.mobileBtn {
+    width: 100%;
+    max-width: 200px;
+}
+
+@media (min-width: 769px) {
+    .desktopMenu {
+        display: flex;
+    }
+
+    .mobileToggle {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: none;
+    }
+}
