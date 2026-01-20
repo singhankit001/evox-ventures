@@ -25,10 +25,10 @@ const Footer = () => {
                     <div className={styles.column}>
                         <h3 className={styles.heading}>Services</h3>
                         <ul className={styles.links}>
-                            <li><Link href="/services/corporate">Corporate Events</Link></li>
-                            <li><Link href="/services/sports">Sports Management</Link></li>
-                            <li><Link href="/services/social">Social Gatherings</Link></li>
-                            <li><Link href="/services/travel">Travel Tours</Link></li>
+                            <li><Link href="/services">Corporate Events</Link></li>
+                            <li><Link href="/services">Sports Management</Link></li>
+                            <li><Link href="/services">Social Gatherings</Link></li>
+                            <li><Link href="/services">Travel Tours</Link></li>
                         </ul>
                     </div>
 
@@ -47,15 +47,15 @@ const Footer = () => {
                         <ul className={styles.contactInfo}>
                             <li>
                                 <MapPin size={18} className={styles.icon} />
-                                <span>123 Event Horizon, Business Park, Mumbai, India</span>
+                                <span>Lohegaon, Pune, Maharashtra - 411047</span>
                             </li>
                             <li>
                                 <Phone size={18} className={styles.icon} />
-                                <span>+91 98765 43210</span>
+                                <span>+91 9545393239</span>
                             </li>
                             <li>
                                 <Mail size={18} className={styles.icon} />
-                                <span>hello@evoxventures.com</span>
+                                <span>evoxventures2025@gmail.com</span>
                             </li>
                         </ul>
                     </div>

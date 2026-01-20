@@ -10,25 +10,25 @@ const servicesFunction = [
         id: 1,
         title: 'Corporate Events',
         description: 'Elevate your brand with meticulously planned corporate events. From high-stakes conferences and shareholder meetings to team-building retreats and gala dinners, we ensure every detail reflects your company’s professionalism and vision.',
-        poster: '/images/corporate-v2.jpg'
+        poster: '/images/corporate-v3.jpg'
     },
     {
         id: 2,
         title: 'Sports Management',
         description: 'Passion meets precision. We handle everything from tournament logistics and athlete representation to venue management and fan engagement. Experience sports events that are as seamless as they are thrilling.',
-        poster: '/images/sports-v2.jpg'
+        poster: '/images/sports-v3.jpg'
     },
     {
         id: 3,
         title: 'Social Gatherings',
         description: 'Celebrate life’s special moments with grace and style. Whether it’s an intimate wedding, a milestone birthday, or a grand festive celebration, we curate experiences that bring people together and create cherished memories.',
-        poster: '/images/social-v2.jpg'
+        poster: '/images/social-v3.jpg'
     },
     {
         id: 4,
         title: 'Travel Tours',
         description: 'Embark on unforgettable journeys with our bespoke travel services. We organize guided tours, adventure trips, and luxury getaways to the world’s most breathtaking destinations, ensuring comfort and discovery at every step.',
-        poster: '/images/travel-v2.jpg'
+        poster: '/images/travel-v3.jpg'
     }
 ];
 

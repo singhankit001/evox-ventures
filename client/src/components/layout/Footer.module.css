@@ -1,8 +1,10 @@
 .footer {
-    background-color: var(--color-dark-gray);
+    background-color: var(--color-bg-surface);
     color: var(--color-white);
     padding: 4rem 0 2rem;
     margin-top: auto;
+    position: relative;
+    z-index: 20;
 }
 
 .grid {
