@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import styles from './services.module.css';
@@ -47,16 +48,14 @@ export default function ServicesPage() {
             {servicesFunction.map((service) => (
                 <section key={service.id} className={styles.serviceSection}>
                     <div className={styles.overlay}></div>
-                    <video
+                    <Image
+                        src={service.poster}
+                        alt={service.title}
+                        fill
                         className={styles.videoBg}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        poster={service.poster}
-                    >
-                        <source src={service.videoUrl} type="video/mp4" />
-                    </video>
+                        priority
+                        quality={100}
+                    />
 
                     <div className={styles.content}>
                         <h2 className={styles.title}>{service.title}</h2>
