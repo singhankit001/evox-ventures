@@ -1,7 +1,58 @@
 .pageContainer {
     width: 100%;
+    position: relative;
+    /* Ensure page container doesn't clip fixed elements if they need to be screen-wide */
 }
 
+/* New: Fixed Container for Background Images */
+.backgroundContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    /* Behind content but above body background */
+    background-color: var(--color-bg-main);
+    /* Fallback color */
+}
+
+.backgroundImageWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    /* Smooth cross-fade */
+    z-index: 1;
+}
+
+.backgroundImageWrapper.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.videoBg {
+    object-fit: cover;
+    /* Handled by Next/Image 'fill', but good for backup */
+}
+
+/* Global Dark Overlay upon the images */
+.globalOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    z-index: 3;
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+/* Section styling updates */
 .serviceSection {
     position: relative;
     width: 100%;
@@ -10,8 +61,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     padding: var(--spacing-xl) var(--spacing-md);
+    /* Remove overflow:hidden so it doesn't clip content oddly if used differently */
+    /* transparent background so fixed image shows through */
+    background: transparent;
+    z-index: 10;
+    /* Above the background container */
 }
 
 /* Alternating text alignment for visual interest */
@@ -23,31 +78,6 @@
 .serviceSection:nth-child(even) .content {
     align-items: flex-end;
     text-align: right;
-}
-
-.videoBg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
-    z-index: -1;
-    transition: background 0.3s ease;
-}
-
-.serviceSection:hover .overlay {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
 }
 
 .content {
@@ -134,5 +164,7 @@
     .serviceSection {
         height: auto;
         padding: 6rem 1rem;
+        min-height: 100vh;
+        /* Ensure full height on mobile too */
     }
 }
