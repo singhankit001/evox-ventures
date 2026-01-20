@@ -3,8 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
 import styles from './services.module.css';
 
 const servicesFunction = [
@@ -69,8 +67,6 @@ export default function ServicesPage() {
 
     return (
         <main className={styles.pageContainer}>
-            <Navbar />
-
             {/* Fixed Background Layer */}
             <div className={styles.backgroundContainer}>
                 {servicesFunction.map((service) => (
@@ -107,8 +103,6 @@ export default function ServicesPage() {
                     </div>
                 </section>
             ))}
-
-            <Footer />
         </main>
     );
 }
