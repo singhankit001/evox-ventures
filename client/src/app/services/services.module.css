@@ -1,0 +1,138 @@
+.pageContainer {
+    width: 100%;
+}
+
+.serviceSection {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+/* Alternating text alignment for visual interest */
+.serviceSection:nth-child(odd) .content {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.serviceSection:nth-child(even) .content {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.videoBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.serviceSection:hover .overlay {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s forwards;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--color-white);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s 0.2s forwards;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--color-accent-orange);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s 0.4s forwards;
+    border: 2px solid transparent;
+}
+
+.ctaButton:hover {
+    background-color: transparent;
+    border-color: var(--color-accent-orange);
+    color: var(--color-accent-orange);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1.125rem;
+    }
+
+    .serviceSection:nth-child(odd) .content,
+    .serviceSection:nth-child(even) .content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .serviceSection {
+        height: auto;
+        padding: 6rem 1rem;
+    }
+}
