@@ -1,53 +1,73 @@
 # Evox Ventures
 
-Evox Ventures is an event management startup offering a comprehensive solution for managing events. This repository contains the source code for the Evox Ventures website and backend.
+Evox Ventures is a premium event management and spatial architecture agency. This repository contains the source code for the official Evox Ventures digital platform. It represents a high-end, immersive digital experience showcasing our capabilities in engineering sophisticated environments for global networks.
+
+## Key Features
+
+- **Cinematic Digital Experience:** Immersive animations, fluid page transitions, and modern glassmorphic aesthetics.
+- **Dynamic Portfolio Showcase:** High-end visual galleries of past elite corporate events, tech hackathons, and luxury retreats.
+- **Budget Estimator:** An interactive, real-time tool for clients to dynamically calculate preliminary project costs.
+- **Integrated Contact & RFQ:** Seamless connection points optimized to convert high-value leads.
+- **Performant & Responsive:** A highly optimized Next.js stack with smooth scroll behavior and responsive typography.
+
+## Tech Stack
+
+The application is built completely utilizing modern full-stack web technologies:
+
+- **Framework:** Next.js (App Router)
+- **UI Library:** React 19
+- **Styling:** Tailwind CSS + Vanilla CSS Modules for specific architectural animations
+- **Animations:** Framer Motion, GSAP, and Embla Carousel
+- **Deployment & Edge:** Deployed on Vercel (or seamlessly adaptable to similar edge environments)
 
 ## Project Structure
 
-- **client/**: The frontend application built with Next.js.
-- **server/**: The backend application built with Node.js and Express.
+```text
+evox-ventures/
+├── client/
+│   ├── src/
+│   │   ├── app/            # Next.js App Router (Pages, Layouts, API Routes)
+│   │   ├── components/     # Reusable and Modular UI components (Home, Portfolio, Layouts)
+│   │   └── lib/            # Utilities, Configs, and helper functions
+│   ├── public/             # Static Assets, images, and public elements
+│   ├── tailwind.config.js  # Styling configurations
+│   └── package.json        # Project scripts and dependencies
+└── README.md
+```
 
-## Getting Started
+## Setup and Installation
 
-### Prerequisites
+Follow these steps to set up the repository locally:
 
-- Node.js installed on your machine.
-- MongoDB (or your database of choice) connection string if applicable.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/singhankit001/evox-ventures.git
+   cd evox-ventures/client
+   ```
 
-### Installation
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository-url>
-    cd evox-ventures
-    ```
+3. **Run the local development server:**
+   ```bash
+   npm run dev
+   ```
 
-2.  **Setup Client:**
-    ```bash
-    cd client
-    npm install
-    npm run dev
-    ```
+4. **Access the application:**
+   Open your browser and navigate to `http://localhost:3000`.
 
-3.  **Setup Server:**
-    ```bash
-    cd server
-    npm install
-    npm run dev
-    ```
+## Deployment
 
-## Features
+The platform is designed to be highly portable and edge-ready. Pushing to a modern edge provider like Vercel or AWS Amplify will automatically detect the Next.js framework and configure builds accordingly.
 
-- **Budget Estimator:** An interactive tool to estimate event costs.
-- **Responsive Design:** Optimized for mobile and desktop devices.
-- **modern UI/UX:** Built with modern design principles.
+## Roadmap & Future Enhancements
 
-## Technologies Used
+- WebGL/Three.js interactive heroic 3D experiences.
+- Advanced client portal for ongoing event logistics and tracking.
+- Automated CRM pipeline integration with the contact API route.
 
-- **Frontend:** Next.js, React, Tailwind CSS (if applicable), Vanilla CSS.
-- **Backend:** Node.js, Express.
-- **Database:** MongoDB (implied).
+## Author
 
-## License
-
-[License Name]
+**Ankit Singh** - Architect and lead engineer for the digital presence.
