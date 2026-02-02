@@ -1,158 +1,163 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 1.5rem 0;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
-    pointer-events: none; /* Let clicks pass through body when not hovering nav */
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1400px;
+  z-index: 100;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  /* World-Class Glassmorphism */
+  background: rgba(8, 8, 8, 0.4);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .scrolled {
-    padding: 1rem 0;
+  top: 1rem;
+  width: 90%;
+  padding: 0.5rem 1.5rem;
+  background: rgba(3, 3, 3, 0.85);
+  backdrop-filter: blur(50px) saturate(200%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 100px -10px rgba(0,0,0,0.8), 0 0 50px rgba(249, 115, 22, 0.05);
 }
 
 .navWrapper {
-    pointer-events: auto;
-    background: rgba(10, 10, 10, 0.35);
-    backdrop-filter: blur(28px) saturate(180%);
-    -webkit-backdrop-filter: blur(28px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    border-radius: 9999px;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
-}
-
-.scrolled .navWrapper {
-    background: rgba(10, 10, 10, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.navContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  cursor: pointer;
+  z-index: 101;
+  display: flex;
+  align-items: center;
 }
 
-.logoImage {
-    object-fit: contain;
-    height: 38px;
-    width: auto;
-    padding-left: 0.5rem;
-}
-
-/* .scrolled .logo removed as no color change needed */
-
-.logoAccent {
-    color: var(--color-accent-orange);
+.logoContainer {
+  display: flex;
+  align-items: center;
 }
 
 .desktopMenu {
-    display: none;
-    align-items: center;
-    gap: 32px;
+  display: none;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .desktopMenu {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.linksContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navLink {
-    color: var(--color-white);
-    font-size: 0.875rem;
-    font-weight: 500;
-    position: relative;
-    padding: 0.5rem 0.75rem;
-    transition: color 0.2s ease-out;
-}
-
-.scrolled .navLink {
-    color: var(--color-text-main);
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-poppins);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.4s ease;
+  border-radius: 9999px;
+  z-index: 10;
 }
 
 .navLink:hover {
-    color: var(--color-accent-orange);
+  color: rgba(255, 255, 255, 1);
 }
 
-.navLink::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-accent-orange), rgba(251, 191, 36, 0.85));
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+.navLink.active {
+  color: rgba(255, 255, 255, 1);
 }
 
-.navLink:hover::after {
-    transform: scaleX(1);
-    opacity: 1;
+.activePill {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  z-index: -1;
+  box-shadow: 0 0 20px rgba(255,255,255,0.02);
+}
+
+.ctaContainer {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .ctaContainer {
+    display: block;
+    z-index: 101;
+  }
 }
 
 .mobileToggle {
-    display: block;
-    background: none;
-    border: none;
-    color: var(--color-white);
-    cursor: pointer;
-    z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  z-index: 101;
 }
 
-.scrolled .mobileToggle {
-    color: var(--color-text-main);
+.mobileToggle:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Mobile Menu */
+@media (min-width: 1024px) {
+  .mobileToggle {
+    display: none;
+  }
+}
+
 .mobileMenu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background: var(--color-bg-surface);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    transition: right 0.3s ease-in-out;
-    padding: 2rem;
-    z-index: 999;
-    /* Ensure it is behind the toggle but above simple content */
-}
-
-.mobileMenu.open {
-    right: 0;
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 3, 3, 0.98);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .mobileNavLink {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-text-main);
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-poppins);
+  letter-spacing: -0.02em;
+  transition: all 0.4s ease;
+  padding: 1rem 0;
+  display: block;
 }
 
-.mobileBtn {
-    width: 100%;
-    max-width: 200px;
-}
-
-@media (min-width: 769px) {
-    .desktopMenu {
-        display: flex;
-    }
-
-    .mobileToggle {
-        display: none;
-    }
-
-    .mobileMenu {
-        display: none;
-    }
+.mobileNavLink:hover {
+  color: white;
+  padding-left: 1rem;
 }
