@@ -6,7 +6,7 @@ import styles from "./Footer.module.css";
 
 const items = [
   { href: "#", label: "Facebook", Icon: Facebook },
-  { href: "#", label: "Instagram", Icon: Instagram },
+  { href: "https://www.instagram.com/evox_ventures/", label: "Instagram", Icon: Instagram },
   { href: "#", label: "LinkedIn", Icon: Linkedin },
   { href: "#", label: "Twitter", Icon: Twitter },
 ];
@@ -18,6 +18,8 @@ export default function FooterSocials() {
         <motion.a
           key={label}
           href={href}
+          target={href !== "#" ? "_blank" : undefined}
+          rel={href !== "#" ? "noopener noreferrer" : undefined}
           className={styles.socialLink}
           aria-label={label}
           data-cursor-hover
