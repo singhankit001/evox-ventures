@@ -1,9 +1,13 @@
 "use client";
 
-import { animate, useInView } from "framer-motion";
+import { useInView, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Card } from "@/components/ui/Card";
+import ScrollReveal, { WordReveal } from "@/components/ui/ScrollReveal";
+import { Zap, Target, Globe, Trophy } from "lucide-react";
+
+function easeOutCubic(t) {
+  return 1 - (1 - t) ** 3;
+}
 
 function Counter({ value, suffix = "" }) {
   const ref = useRef(null);
@@ -12,12 +16,19 @@ function Counter({ value, suffix = "" }) {
 
   useEffect(() => {
     if (!inView) return;
-    const controls = animate(0, value, {
-      duration: 2.2,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
+    const start = performance.now();
+    const duration = 2500;
+    let raf = 0;
+
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const n = Math.round(value * easeOutCubic(t));
+      setDisplay(n);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [inView, value]);
 
   return (
@@ -29,45 +40,69 @@ function Counter({ value, suffix = "" }) {
 }
 
 const stats = [
-  { label: "Events Organized", value: 320, suffix: "+" },
-  { label: "Clients Served", value: 180, suffix: "+" },
-  { label: "Cities Covered", value: 45, suffix: "+" },
-  { label: "Years Experience", value: 12, suffix: "" },
+  { label: "Organized", value: 320, suffix: "+", icon: Trophy },
+  { label: "Clients", value: 180, suffix: "+", icon: Zap },
+  { label: "Cities", value: 45, suffix: "+", icon: Globe },
+  { label: "Experience", value: 12, suffix: "Y", icon: Target },
 ];
 
 export default function StatsSection() {
   return (
-    <section id="stats" className="relative section-padding">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(88,28,135,0.15),transparent_60%)]"
-      />
-      <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-6">
-        <ScrollReveal className="mb-12 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-orange-400/90">
-            By the numbers
-          </p>
-          <h2 className="font-[family-name:var(--font-poppins)] text-3xl font-bold text-white md:text-4xl">
-            Trusted at scale
-          </h2>
-        </ScrollReveal>
-        <Card hoverable={false} className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-4 p-10 md:p-14">
-          {stats.map((s) => (
-            <div
+    <section id="stats" className="relative py-32 md:py-48 overflow-hidden bg-[#030303]">
+      {/* Absolute Cinematic Flow Line */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 flex justify-center items-center">
+        <svg width="100%" height="100%" viewBox="0 0 1200 400" preserveAspectRatio="none" className="absolute top-1/2 -translate-y-1/2">
+          <motion.path
+            d="M-200 200C100 200 300 50 600 50C900 50 1100 350 1400 350"
+            fill="none"
+            stroke="url(#ambient-grade)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 4, ease: "easeInOut" }}
+            strokeDasharray="10 10"
+          />
+          <defs>
+            <linearGradient id="ambient-grade" x1="0" y1="0" x2="1200" y2="400">
+              <stop offset="0%" stopColor="#F97316" stopOpacity="0.1" />
+              <stop offset="50%" stopColor="#F97316" stopOpacity="1" />
+              <stop offset="100%" stopColor="#818CF8" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-12 flex flex-col items-center">
+        <div className="text-center mb-24">
+          <WordReveal className="text-5xl md:text-7xl lg:text-[7rem] font-black tracking-tighter leading-[0.9] text-white">
+            Trusted At Scale
+          </WordReveal>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-x-8 gap-y-16 lg:gap-x-12">
+          {stats.map((s, i) => (
+            <motion.div 
               key={s.label}
-              className="text-center md:border-x md:border-white/[0.06] first:md:border-l-0 last:md:border-r-0"
+              className="flex flex-col items-center text-center group"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="font-[family-name:var(--font-poppins)] text-5xl font-bold tabular-nums text-white md:text-6xl">
-                <span className="bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-transparent">
-                  <Counter value={s.value} suffix={s.suffix} />
-                </span>
+              <div className="text-6xl md:text-8xl lg:text-[7rem] font-black tracking-tighter text-white transition-all duration-700 group-hover:text-orange-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_40px_rgba(255,115,0,0.4)]">
+                <Counter value={s.value} suffix={s.suffix} />
               </div>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                {s.label}
-              </p>
-            </div>
+              <div className="mt-6 flex items-center gap-3">
+                 <s.icon className="w-4 h-4 text-orange-500/60" />
+                 <span className="text-xs font-black uppercase tracking-[0.3em] text-zinc-500 font-bold whitespace-nowrap">
+                   {s.label}
+                 </span>
+              </div>
+            </motion.div>
           ))}
-        </Card>
+        </div>
       </div>
     </section>
   );
