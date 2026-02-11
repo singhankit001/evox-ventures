@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight, Layers, Sparkles, Wallet } from "lucide-react";
-import { useRef } from "react";
-import ScrollReveal, { ScrollRevealStagger, itemReveal } from "@/components/ui/ScrollReveal";
+import ScrollReveal, { ScrollRevealStagger, itemReveal, WordReveal } from "@/components/ui/ScrollReveal";
 import { Card } from "@/components/ui/Card";
 
 const services = [
@@ -31,46 +30,28 @@ const services = [
 ];
 
 export default function ServicesSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [50, -50]);
-
   return (
     <section
-      ref={ref}
       id="services"
-      className="relative overflow-hidden section-padding"
+      className="relative overflow-hidden section-padding section-blend-top"
     >
-      <motion.div
+      <div
         aria-hidden
-        style={{ y: parallaxY }}
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_0%,rgba(249,115,22,0.1),transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_0%,rgba(249,115,22,0.08),transparent_55%)]"
       />
       <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-6">
-        <ScrollReveal className="mb-12 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-orange-400/90">
-            What we deliver
-          </p>
-          <h2 className="relative font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
-            Why choose{" "}
-            <span className="bg-gradient-to-br from-orange-400 to-orange-600 bg-clip-text text-transparent">
-              Evox Ventures
-            </span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400 mb-0">
-            Built for brands that expect precision, creativity, and white-glove service at every
-            touchpoint.
-          </p>
-        </ScrollReveal>
+        <div className="mb-20 text-center">
+          <span className="eyebrow mb-8 inline-block italic">High-Stakes Execution</span>
+          <WordReveal className="text-5xl md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.9] text-white overflow-hidden">
+            Why choose Evox Ventures
+          </WordReveal>
+        </div>
 
         <ScrollRevealStagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
             <motion.div key={s.title} variants={itemReveal} className="h-full">
               <Card hoverable className="group flex h-full flex-col p-8">
-                <div className="mb-6 inline-flex rounded-2xl border border-orange-500/20 bg-orange-500/10 p-3 text-[#FF6A00]">
+                <div className="mb-6 inline-flex rounded-2xl border border-orange-500/20 bg-orange-500/10 p-3 text-[#FF6A00] transition-transform duration-300 group-hover:scale-105">
                   <s.icon className="h-6 w-6" strokeWidth={1.5} />
                 </div>
                 <h3 className="mb-4 font-[family-name:var(--font-poppins)] text-xl md:text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FF6A00]">
