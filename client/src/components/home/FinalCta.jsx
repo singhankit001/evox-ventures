@@ -1,38 +1,35 @@
 "use client";
 
-import { motion } from "framer-motion";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
 
 export default function FinalCta() {
   return (
-    <section id="cta" className="relative section-padding">
-      <div className="container relative z-10 mx-auto max-w-4xl px-4 text-center md:px-6">
-        <ScrollReveal>
-          <Card hoverable={false} className="relative overflow-hidden rounded-[2rem] border-orange-500/20 bg-gradient-to-br from-orange-500/10 via-zinc-900/60 to-purple-950/30 p-12 md:p-16">
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-orange-500/20 blur-[80px]"
-              animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.9, 0.6] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              aria-hidden
-              className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-purple-600/15 blur-[70px]"
-              animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <h2 className="relative mx-auto max-w-lg font-[family-name:var(--font-poppins)] text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
-              Ready to plan your next event?
-            </h2>
-            <p className="relative mx-auto mt-6 max-w-md text-lg leading-[1.6] text-zinc-400 mb-8">
-              Join brands that trust Evox Ventures for premium execution and transparent planning.
-            </p>
-            <Button href="/budget-estimator" variant="primary" className="relative py-5 px-12 text-base shadow-[0_8px_30px_rgba(255,106,0,0.3)] hover:shadow-[0_12px_40px_rgba(255,106,0,0.5)]">
-              Start Planning Now
-            </Button>
-          </Card>
+    <section id="cta" className="relative py-40 md:py-56 bg-[#030303] overflow-hidden">
+      {/* Massive Ambient Radial Grade */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(255,115,0,0.15)_0%,transparent_70%)] blur-[100px] pointer-events-none" />
+      
+      <div className="container relative z-10 mx-auto px-6 text-center">
+        <ScrollReveal className="flex flex-col items-center">
+          <div className="h-24 w-px bg-gradient-to-b from-transparent via-orange-500 to-transparent mb-12 animate-pulse" />
+          
+          <h2 className="relative mx-auto max-w-4xl text-5xl font-black tracking-tighter text-white md:text-7xl lg:text-[6rem] drop-shadow-[0_0_40px_rgba(255,255,255,0.1)] leading-[1.05]">
+            Let's Build Something <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">Extraordinary.</span>
+          </h2>
+          
+          <p className="relative mx-auto mt-10 max-w-2xl text-xl font-light leading-relaxed text-zinc-400 mb-16">
+            Join the elite tier of brands relying on Evox Ventures for high-stakes, flawlessly executed live experiences.
+          </p>
+
+          <Button 
+            href="/quotation" 
+            variant="luxury" 
+            className="relative px-12 py-5 text-xl tracking-[0.2em] font-bold shadow-[0_0_60px_rgba(249,115,22,0.4)] hover:shadow-[0_0_100px_rgba(249,115,22,0.7)] transition-all duration-700 hover:scale-105" 
+            data-cursor-hover
+          >
+            Initiate Project
+          </Button>
         </ScrollReveal>
       </div>
     </section>
