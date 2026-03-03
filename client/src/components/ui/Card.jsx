@@ -6,10 +6,9 @@ export const Card = forwardRef(({
   hoverable = true,
   ...props 
 }, ref) => {
-  const baseStyles = "relative overflow-hidden rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.2)]";
-  
+  const baseStyles = "glass-surface relative overflow-hidden rounded-[2.5rem] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]";
   const hoverStyles = hoverable 
-    ? "transition duration-200 ease-out hover:-translate-y-1.5 hover:scale-[1.02] hover:border-orange-500/40 hover:shadow-[0_12px_40px_-12px_rgba(249,115,22,0.3)] hover:bg-white/[0.04]" 
+    ? "hover:-translate-y-3 hover:scale-[1.01] hover:border-white/20 hover:shadow-[0_60px_90px_-20px_rgba(0,0,0,0.9)]" 
     : "";
 
   return (
@@ -18,8 +17,13 @@ export const Card = forwardRef(({
       className={`${baseStyles} ${hoverStyles} ${className}`} 
       {...props}
     >
-      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5" aria-hidden="true" />
-      {children}
+      {/* Dynamic Inner Light Sweep */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 transition-opacity duration-1000 group-hover:opacity-100" />
+      
+      {/* content layer */}
+      <div className="relative z-10 h-full flex flex-col">
+        {children}
+      </div>
     </div>
   );
 });
