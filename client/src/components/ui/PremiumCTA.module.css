@@ -1,0 +1,135 @@
+/* GPU-friendly: transforms, opacity, box-shadow — no backdrop-filter */
+
+.touch {
+  /* Skip magnetic + border animation hints on coarse pointers */
+}
+
+.wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 2px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 106, 0, 0.85),
+    rgba(249, 115, 22, 0.35),
+    rgba(168, 85, 247, 0.45),
+    rgba(255, 106, 0, 0.85)
+  );
+  background-size: 300% 300%;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wrap:not(.touch):hover {
+    animation: premium-border-shift 5s ease infinite;
+  }
+}
+
+@keyframes premium-border-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 1.25rem 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #7a3a00 0%, #ff6a00 45%, #ff9340 100%);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 1.35rem 2.75rem;
+    font-size: 1rem;
+  }
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%) skewX(-12deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.wrap:hover .shine {
+  opacity: 1;
+  animation: premium-shine 0.9s ease forwards;
+}
+
+@keyframes premium-shine {
+  to {
+    transform: translateX(120%) skewX(-12deg);
+  }
+}
+
+.glow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(249, 115, 22, 0.35) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  z-index: -1;
+  filter: blur(12px);
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.wrap:hover .glow {
+  opacity: 1;
+}
+
+.icon {
+  display: inline-flex;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wrap:hover .icon {
+  transform: translateX(4px);
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  transform: scale(0);
+  animation: premium-ripple 0.55s ease-out forwards;
+}
+
+@keyframes premium-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
