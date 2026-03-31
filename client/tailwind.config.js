@@ -23,3 +23,4 @@ module.exports = {
   plugins: [],
 };
 
+\n/* fix: improve mobile navbar */\n
