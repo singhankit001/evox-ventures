@@ -1,3 +1,51 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@media (pointer: fine) {
+  html.custom-cursor-active body {
+    cursor: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.hero-gradient-wave {
+  background: linear-gradient(
+    125deg,
+    rgba(249, 115, 22, 0.14) 0%,
+    transparent 38%,
+    rgba(88, 28, 135, 0.18) 52%,
+    transparent 78%,
+    rgba(249, 115, 22, 0.1) 100%
+  );
+  background-size: 220% 220%;
+  animation: hero-gradient-wave 22s ease-in-out infinite;
+}
+
+@keyframes hero-gradient-wave {
+  0%,
+  100% {
+    background-position: 0% 40%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient-wave {
+    animation: none;
+  }
+}
+
 :root {
   /* Premium Dark Theme Colors */
   --color-bg-main: #0a0a0a;
@@ -43,11 +91,6 @@
   --font-poppins: var(--font-poppins), system-ui, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 html,
 body {
@@ -55,12 +98,11 @@ body {
   overflow-x: hidden;
   font-family: var(--font-inter);
   color: var(--color-text-main);
-  background: var(--color-bg-main);
+  background: radial-gradient(circle at top, #0f0f12, #050505);
   line-height: 1.6;
 }
 
 h1,
-name,
 h2,
 h3,
 h4,
@@ -87,7 +129,30 @@ button {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.hero-padding {
+  padding-top: 160px;
+  padding-bottom: 140px;
 }
 
 .btn {

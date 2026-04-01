@@ -1,25 +1,31 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin } from 'lucide-react';
+import FooterSocials from './FooterSocials';
 import styles from './Footer.module.css';
 
 const Footer = () => {
     return (
         <footer className={styles.footer}>
+            <div className={styles.glowTop} aria-hidden />
             <div className="container">
                 <div className={styles.grid}>
                     <div className={styles.column}>
-                        <Link href="/" className={styles.logo}>
+                        <Link href="/" className={styles.logo} data-cursor-hover>
                             Evox <span className={styles.logoAccent}>Ventures</span>
                         </Link>
                         <p className={styles.description}>
                             Creating unforgettable moments through expert event management and curated experiences.
                         </p>
-                        <div className={styles.socials}>
-                            <a href="#" className={styles.socialLink} aria-label="Facebook"><Facebook size={20} /></a>
-                            <a href="#" className={styles.socialLink} aria-label="Instagram"><Instagram size={20} /></a>
-                            <a href="#" className={styles.socialLink} aria-label="LinkedIn"><Linkedin size={20} /></a>
-                            <a href="#" className={styles.socialLink} aria-label="Twitter"><Twitter size={20} /></a>
-                        </div>
+                        <form className="mt-6 mb-6 flex rounded-xl border border-white/10 bg-white/5 focus-within:border-orange-500/50 focus-within:ring-1 focus-within:ring-orange-500/50 p-1 w-full max-w-sm">
+                            <input 
+                                type="email" 
+                                placeholder="Email address" 
+                                className="w-full bg-transparent px-4 py-2 text-sm text-white outline-none placeholder:text-white/40" 
+                                required 
+                            />
+                            <button type="submit" className="rounded-lg bg-orange-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-orange-600">Subscribe</button>
+                        </form>
+                        <FooterSocials />
                     </div>
 
                     <div className={styles.column}>
