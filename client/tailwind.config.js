@@ -23,4 +23,4 @@ module.exports = {
   plugins: [],
 };
 
-\n/* fix: improve mobile navbar */\n
+\n/* fix: improve mobile navbar */\n\n/* style: optimize stacking */\n
