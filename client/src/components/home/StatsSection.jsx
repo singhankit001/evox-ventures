@@ -3,6 +3,7 @@
 import { animate, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { Card } from "@/components/ui/Card";
 
 function Counter({ value, suffix = "" }) {
   const ref = useRef(null);
@@ -50,23 +51,23 @@ export default function StatsSection() {
             Trusted at scale
           </h2>
         </ScrollReveal>
-        <div className="grid gap-8 rounded-3xl border border-white/[0.07] bg-zinc-950/40 p-10 backdrop-blur-xl md:grid-cols-4 md:gap-4 md:p-14">
+        <Card hoverable={false} className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-4 p-10 md:p-14">
           {stats.map((s) => (
             <div
               key={s.label}
               className="text-center md:border-x md:border-white/[0.06] first:md:border-l-0 last:md:border-r-0"
             >
               <div className="font-[family-name:var(--font-poppins)] text-5xl font-bold tabular-nums text-white md:text-6xl">
-                <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-br from-white via-white to-zinc-400 bg-clip-text text-transparent">
                   <Counter value={s.value} suffix={s.suffix} />
                 </span>
               </div>
-              <p className="mt-3 text-sm font-medium uppercase tracking-wider text-zinc-500">
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
                 {s.label}
               </p>
             </div>
           ))}
-        </div>
+        </Card>
       </div>
     </section>
   );

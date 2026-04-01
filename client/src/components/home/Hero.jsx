@@ -11,6 +11,7 @@ import { ChevronDown } from "lucide-react";
 import { useMemo } from "react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { MagneticLink } from "./MagneticLink";
+import { Button } from "@/components/ui/Button";
 import styles from "./Hero.module.css";
 
 const TYPING_PHRASES = [
@@ -119,7 +120,7 @@ function MeshGradient({ mouseX, mouseY, reduced }) {
         transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
       />
       {/* Animated gradient wave layer */}
-      <div className="hero-gradient-wave absolute inset-0 opacity-70" />
+      <div className="hero-gradient-wave absolute inset-0 opacity-40 mix-blend-screen" />
     </div>
   );
 }
@@ -182,9 +183,11 @@ export default function Hero() {
       )}
 
       <div className={`container relative z-10 ${styles.content}`}>
-        <div
+        <motion.div
+          animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.05, 1] }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-[12%] z-0 h-[min(110vw,720px)] w-[min(110vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(249,115,22,0.45)_0%,rgba(88,28,135,0.2)_38%,transparent_68%)] blur-3xl"
+          className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[min(110vw,800px)] w-[min(110vw,800px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,106,0,0.15)_0%,rgba(249,115,22,0.05)_40%,transparent_70%)] blur-3xl mix-blend-screen"
         />
 
         <motion.div
@@ -223,34 +226,18 @@ export default function Hero() {
 
           <motion.div
             variants={lineVariants}
-            className={`${styles.ctaGroup} mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-5`}
+            className={`${styles.ctaGroup} mt-10 flex flex-wrap items-center justify-center gap-6`}
           >
-            <MagneticLink
-              href="/budget-estimator"
-              className="group btn relative inline-flex overflow-hidden rounded-xl bg-[#FF6A00] px-9 py-4 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_4px_20px_rgba(255,106,0,0.3)] transition-all duration-200 ease-out hover:shadow-[0_8px_30px_rgba(255,106,0,0.5)] hover:scale-[1.02]"
-            >
-              <motion.span
-                className="relative z-10 inline-block"
-                whileTap={{ scale: 0.96 }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 22 }}
-              >
+            <MagneticLink href="/budget-estimator">
+              <Button variant="primary" className="py-5 px-10 text-base shadow-[0_8px_30px_rgba(255,106,0,0.3)] hover:shadow-[0_12px_40px_rgba(255,106,0,0.45)]">
                 Get an Estimate
-              </motion.span>
-              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-white/10 transition-all duration-500 group-hover:translate-x-0" />
+              </Button>
             </MagneticLink>
 
-            <MagneticLink
-              href="/portfolio"
-              className="group btn btn-secondary relative inline-flex overflow-hidden rounded-xl border border-white/20 bg-transparent px-9 py-4 text-sm font-semibold uppercase tracking-wide backdrop-blur-md transition-all duration-300 hover:bg-white/[0.05]"
-            >
-              <motion.span
-                whileTap={{ scale: 0.96 }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 400, damping: 22 }}
-              >
+            <MagneticLink href="/portfolio">
+              <Button variant="secondary" className="py-5 px-10 text-base border-white/[0.08] hover:border-white/[0.15]">
                 View Portfolio
-              </motion.span>
+              </Button>
             </MagneticLink>
           </motion.div>
         </motion.div>
@@ -264,7 +251,7 @@ export default function Hero() {
         transition={{ delay: 1.1, duration: 0.6 }}
         data-cursor-hover
       >
-        <span className="text-[10px] font-medium uppercase tracking-[0.35em]">Scroll</span>
+        <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-white/50">Explore</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}

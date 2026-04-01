@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal, { ScrollRevealStagger, itemReveal } from "@/components/ui/ScrollReveal";
+import { Card } from "@/components/ui/Card";
 
 const events = [
   {
@@ -53,35 +54,33 @@ export default function EventsShowcase() {
 
         <ScrollRevealStagger className="grid gap-8 sm:grid-cols-2 lg:gap-[40px]">
           {events.map((e) => (
-            <motion.article
-              key={e.title}
-              variants={itemReveal}
-              className="group relative overflow-hidden rounded-2xl bg-zinc-900"
-            >
-              <Image
-                src={e.src}
-                alt={e.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover transition-transform duration-300 ease-out group-hover:scale-[1.05]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-90 transition-opacity duration-200 ease-out group-hover:opacity-100" />
-              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
-                <span className="mb-2 inline-block w-fit rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-orange-300 transition-transform duration-200 ease-out group-hover:-translate-y-2">
-                  {e.tag}
-                </span>
-                <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-semibold text-white transition-transform duration-200 ease-out group-hover:-translate-y-2 md:text-3xl">
-                  {e.title}
-                </h3>
-                <Link
-                  href="/portfolio"
-                  className="mt-3 inline-flex w-fit text-sm font-medium text-orange-400 opacity-0 transition-all duration-200 ease-out group-hover:translate-y-0 group-hover:opacity-100"
-                  data-cursor-hover
-                >
-                  View Details →
-                </Link>
-              </div>
-            </motion.article>
+            <motion.div key={e.title} variants={itemReveal}>
+              <Card hoverable className="group relative flex h-full min-h-[400px] flex-col overflow-hidden sm:min-h-[500px]">
+                <Image
+                  src={e.src}
+                  alt={e.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 transition-opacity duration-300 ease-out group-hover:opacity-100" />
+                <div className="absolute inset-0 flex flex-col justify-end p-8">
+                  <span className="mb-3 inline-block w-fit rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-orange-400 transition-transform duration-300 ease-out group-hover:-translate-y-2">
+                    {e.tag}
+                  </span>
+                  <h3 className="font-[family-name:var(--font-poppins)] text-2xl font-semibold tracking-tight text-white transition-transform duration-300 ease-out group-hover:-translate-y-2 md:text-3xl">
+                    {e.title}
+                  </h3>
+                  <Link
+                    href="/portfolio"
+                    className="mt-4 flex w-fit items-center gap-2 text-sm font-semibold tracking-widest text-orange-400 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+                    data-cursor-hover
+                  >
+                    VIEW DETAILS →
+                  </Link>
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </ScrollRevealStagger>
       </div>

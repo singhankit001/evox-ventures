@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { Card } from "@/components/ui/Card";
 
 const items = [
   {
@@ -53,7 +54,7 @@ export default function TestimonialsCarousel() {
           </h2>
         </ScrollReveal>
 
-        <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-xl md:p-8">
+        <Card hoverable={false} className="relative p-8 md:p-14">
           <Quote className="absolute right-8 top-8 h-10 w-10 text-orange-500/20 md:h-14 md:w-14" />
 
           <div className="relative min-h-[220px] md:min-h-[200px]">
@@ -66,7 +67,7 @@ export default function TestimonialsCarousel() {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="text-center flex flex-col items-center"
               >
-                <div className="flex gap-1 mb-8 justify-center text-orange-500">
+                <div className="flex gap-1 mb-8 justify-center text-[#FF6A00]">
                   <Star className="w-5 h-5 fill-current" />
                   <Star className="w-5 h-5 fill-current" />
                   <Star className="w-5 h-5 fill-current" />
@@ -77,7 +78,7 @@ export default function TestimonialsCarousel() {
                   &quot;{items[i].quote}&quot;
                 </p>
                 <div className="flex flex-col items-center justify-center gap-4 text-center">
-                  <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-white/20">
+                  <div className="h-14 w-14 overflow-hidden rounded-full border border-white/10 ring-2 ring-white/5">
                     <Image src={items[i].photo} alt={items[i].name} width={56} height={56} className="object-cover" />
                   </div>
                   <div>
@@ -89,24 +90,24 @@ export default function TestimonialsCarousel() {
             </AnimatePresence>
           </div>
 
-          <div className="mt-10 flex items-center justify-center gap-4">
+          <div className="mt-12 flex items-center justify-center gap-6">
             <button
               type="button"
               onClick={prev}
-              className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white transition hover:border-orange-500/40 hover:bg-orange-500/10"
+              className="rounded-full border border-white/10 bg-white/[0.03] p-3 text-white transition duration-200 hover:border-[#FF6A00]/40 hover:bg-[#FF6A00]/10 hover:scale-[1.05]"
               aria-label="Previous testimonial"
               data-cursor-hover
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               {items.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setI(idx)}
-                  className={`h-2 rounded-full transition-all ${
-                    idx === i ? "w-8 bg-orange-500" : "w-2 bg-zinc-600 hover:bg-zinc-500"
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    idx === i ? "w-8 bg-[#FF6A00] shadow-[0_0_12px_rgba(255,106,0,0.5)]" : "w-2 bg-white/20 hover:bg-white/40"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                   data-cursor-hover
@@ -116,14 +117,14 @@ export default function TestimonialsCarousel() {
             <button
               type="button"
               onClick={next}
-              className="rounded-full border border-white/15 bg-white/5 p-2.5 text-white transition hover:border-orange-500/40 hover:bg-orange-500/10"
+              className="rounded-full border border-white/10 bg-white/[0.03] p-3 text-white transition duration-200 hover:border-[#FF6A00]/40 hover:bg-[#FF6A00]/10 hover:scale-[1.05]"
               aria-label="Next testimonial"
               data-cursor-hover
             >
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
-        </div>
+        </Card>
       </div>
     </section>
   );

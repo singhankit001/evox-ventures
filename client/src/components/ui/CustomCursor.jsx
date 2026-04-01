@@ -1,26 +1,17 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useCallback, useEffect, useState } from "react";
-
-const RIPPLE_DURATION_MS = 650;
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
-  const [ripples, setRipples] = useState([]);
-  const [hovering, setHovering] = useState(false);
+  const dotRef = useRef(null);
+  const ringRef = useRef(null);
+  const pos = useRef({ x: -100, y: -100 });
+  const ringPos = useRef({ x: -100, y: -100 });
+  const hovering = useRef(false);
+  const rafId = useRef(null);
 
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const smoothConfig = { damping: 28, stiffness: 420, mass: 0.4 };
-  const trailConfig = { damping: 35, stiffness: 180, mass: 0.6 };
-
-  const dotX = useSpring(cursorX, smoothConfig);
-  const dotY = useSpring(cursorY, smoothConfig);
-  const ringX = useSpring(cursorX, trailConfig);
-  const ringY = useSpring(cursorY, trailConfig);
-
+  // Check for pointer device
   useEffect(() => {
     const mq = window.matchMedia("(pointer: fine)");
     const update = () => setEnabled(mq.matches);
@@ -29,89 +20,87 @@ export default function CustomCursor() {
     return () => mq.removeEventListener("change", update);
   }, []);
 
+  // Hide default cursor
   useEffect(() => {
     if (!enabled) return;
     document.documentElement.classList.add("custom-cursor-active");
     return () => document.documentElement.classList.remove("custom-cursor-active");
   }, [enabled]);
 
-  const onMove = useCallback(
-    (e) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-      const el = document.elementFromPoint(e.clientX, e.clientY);
-      const interactive = el?.closest(
-        "a, button, [role='button'], [data-cursor-hover], input, textarea, select"
-      );
-      setHovering(Boolean(interactive));
-    },
-    [cursorX, cursorY]
-  );
+  // Pure RAF render loop — no React re-renders, no springs, no layout thrashing
+  const tick = useCallback(() => {
+    // Lerp ring position toward actual cursor (smooth trailing)
+    ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.18;
+    ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.18;
 
-  const onDown = useCallback((e) => {
-    const id = `${Date.now()}-${Math.random()}`;
-    setRipples((prev) => [...prev, { id, x: e.clientX, y: e.clientY }]);
-    window.setTimeout(() => {
-      setRipples((prev) => prev.filter((r) => r.id !== id));
-    }, RIPPLE_DURATION_MS);
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+
+    if (dot) {
+      dot.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
+      dot.style.width = dot.style.height = hovering.current ? "10px" : "5px";
+    }
+
+    if (ring) {
+      ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%) scale(${hovering.current ? 1.35 : 1})`;
+      ring.style.opacity = hovering.current ? "0.85" : "0.45";
+    }
+
+    rafId.current = requestAnimationFrame(tick);
   }, []);
 
+  // Mouse tracking — zero state updates, just ref mutations
+  const onMove = useCallback((e) => {
+    pos.current.x = e.clientX;
+    pos.current.y = e.clientY;
+
+    const el = e.target;
+    const interactive = el?.closest?.(
+      "a, button, [role='button'], [data-cursor-hover], input, textarea, select"
+    );
+    hovering.current = Boolean(interactive);
+  }, []);
+
+  // Start/stop loop
   useEffect(() => {
     if (!enabled) return;
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mousedown", onDown);
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    rafId.current = requestAnimationFrame(tick);
+
     return () => {
       window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mousedown", onDown);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, [enabled, onMove, onDown]);
+  }, [enabled, onMove, tick]);
 
   if (!enabled) return null;
 
   return (
     <>
-      <motion.div
+      {/* Dot */}
+      <div
+        ref={dotRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[10000]"
-        style={{ x: dotX, y: dotY, translateX: "-50%", translateY: "-50%" }}
-      >
-        <motion.div
-          className="rounded-full bg-orange-400 shadow-[0_0_16px_rgba(249,115,22,0.85)]"
-          animate={{ width: hovering ? 9 : 5, height: hovering ? 9 : 5 }}
-          transition={{ type: "spring", stiffness: 400, damping: 28 }}
-        />
-      </motion.div>
+        className="pointer-events-none fixed left-0 top-0 z-[10000] rounded-full bg-orange-400 shadow-[0_0_12px_rgba(249,115,22,0.8)]"
+        style={{
+          width: 5,
+          height: 5,
+          willChange: "transform",
+          transition: "width 0.12s ease-out, height 0.12s ease-out",
+        }}
+      />
 
-      <motion.div
+      {/* Ring — NO backdrop-blur, NO framer-motion springs */}
+      <div
+        ref={ringRef}
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[9999]"
-        style={{ x: ringX, y: ringY, translateX: "-50%", translateY: "-50%" }}
-      >
-        <motion.div
-          className="rounded-full border-2 border-orange-400/55 bg-orange-500/[0.06] backdrop-blur-[2px]"
-          animate={{
-            width: hovering ? 52 : 38,
-            height: hovering ? 52 : 38,
-            opacity: hovering ? 1 : 0.65,
-            boxShadow: hovering
-              ? "0 0 32px rgba(249, 115, 22, 0.55), 0 0 72px rgba(249, 115, 22, 0.2), inset 0 0 20px rgba(249, 115, 22, 0.15)"
-              : "0 0 20px rgba(249, 115, 22, 0.25), 0 0 48px rgba(249, 115, 22, 0.08)",
-          }}
-          transition={{ type: "spring", stiffness: 260, damping: 22 }}
-        />
-      </motion.div>
-
-      {ripples.map((r) => (
-        <motion.span
-          key={r.id}
-          aria-hidden
-          className="pointer-events-none fixed z-[9998] h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border border-orange-400/50 bg-orange-500/20"
-          style={{ left: r.x, top: r.y }}
-          initial={{ scale: 0.2, opacity: 0.9 }}
-          animate={{ scale: 4, opacity: 0 }}
-          transition={{ duration: RIPPLE_DURATION_MS / 1000, ease: [0.22, 1, 0.36, 1] }}
-        />
-      ))}
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-8 w-8 rounded-full border-2 border-orange-400/50 shadow-[0_0_10px_rgba(249,115,22,0.2)]"
+        style={{
+          willChange: "transform, opacity",
+          transition: "opacity 0.15s ease-out, box-shadow 0.15s ease-out",
+        }}
+      />
     </>
   );
 }

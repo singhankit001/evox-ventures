@@ -4,26 +4,30 @@
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 32px 0;
-    transition: background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        backdrop-filter 0.45s ease,
-        padding 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
-    background: rgba(10, 10, 10, 0.42);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+    padding: 1.5rem 0;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    pointer-events: none; /* Let clicks pass through body when not hovering nav */
 }
 
 .scrolled {
-    background: rgba(10, 10, 10, 0.78);
+    padding: 1rem 0;
+}
+
+.navWrapper {
+    pointer-events: auto;
+    background: rgba(10, 10, 10, 0.35);
     backdrop-filter: blur(28px) saturate(180%);
     -webkit-backdrop-filter: blur(28px) saturate(180%);
-    padding: 20px 0;
-    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.55);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+}
+
+.scrolled .navWrapper {
+    background: rgba(10, 10, 10, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .navContainer {
@@ -40,8 +44,9 @@
 
 .logoImage {
     object-fit: contain;
-    height: 50px;
+    height: 38px;
     width: auto;
+    padding-left: 0.5rem;
 }
 
 /* .scrolled .logo removed as no color change needed */
@@ -58,9 +63,11 @@
 
 .navLink {
     color: var(--color-white);
+    font-size: 0.875rem;
     font-weight: 500;
     position: relative;
-    transition: color 0.3s ease;
+    padding: 0.5rem 0.75rem;
+    transition: color 0.2s ease-out;
 }
 
 .scrolled .navLink {
@@ -86,6 +93,7 @@
 
 .navLink:hover::after {
     transform: scaleX(1);
+    opacity: 1;
 }
 
 .mobileToggle {

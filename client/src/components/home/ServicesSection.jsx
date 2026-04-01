@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowUpRight, Layers, Sparkles, Wallet } from "lucide-react";
 import { useRef } from "react";
 import ScrollReveal, { ScrollRevealStagger, itemReveal } from "@/components/ui/ScrollReveal";
+import { Card } from "@/components/ui/Card";
 
 const services = [
   {
@@ -65,31 +66,29 @@ export default function ServicesSection() {
           </p>
         </ScrollReveal>
 
-        <ScrollRevealStagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-[40px]">
+        <ScrollRevealStagger className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => (
-            <motion.article
-              key={s.title}
-              variants={itemReveal}
-              className="group relative flex h-full flex-col rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_4px_20px_rgba(0,0,0,0.2)] backdrop-blur-xl transition-all duration-200 ease-out hover:-translate-y-2 hover:scale-[1.02] hover:border-orange-500/40 hover:shadow-[0_8px_30px_rgba(255,106,0,0.15)]"
-            >
-              <div className="mb-6 inline-flex rounded-2xl border border-orange-500/20 bg-orange-500/10 p-3 text-[#FF6A00]">
-                <s.icon className="h-6 w-6" strokeWidth={1.5} />
-              </div>
-              <h3 className="mb-4 font-[family-name:var(--font-poppins)] text-xl md:text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FF6A00]">
-                {s.title}
-              </h3>
-              <p className="mb-6 flex-grow text-sm leading-[1.6] text-[#A1A1AA] md:text-base md:leading-[1.8]">
-                {s.desc}
-              </p>
-              <Link
-                href="/services"
-                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:text-[#FF6A00] group-hover:text-[#FF6A00]"
-                data-cursor-hover
-              >
-                Explore
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </motion.article>
+            <motion.div key={s.title} variants={itemReveal} className="h-full">
+              <Card hoverable className="group flex h-full flex-col p-8">
+                <div className="mb-6 inline-flex rounded-2xl border border-orange-500/20 bg-orange-500/10 p-3 text-[#FF6A00]">
+                  <s.icon className="h-6 w-6" strokeWidth={1.5} />
+                </div>
+                <h3 className="mb-4 font-[family-name:var(--font-poppins)] text-xl md:text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FF6A00]">
+                  {s.title}
+                </h3>
+                <p className="mb-6 flex-grow text-sm leading-[1.6] text-[#A1A1AA] md:text-base md:leading-[1.8]">
+                  {s.desc}
+                </p>
+                <Link
+                  href="/services"
+                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-white transition-colors duration-200 hover:text-[#FF6A00] group-hover:text-[#FF6A00]"
+                  data-cursor-hover
+                >
+                  Explore
+                  <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </Card>
+            </motion.div>
           ))}
         </ScrollRevealStagger>
       </div>
