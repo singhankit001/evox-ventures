@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import ScrollReveal, { ScrollRevealStagger, itemReveal } from "@/components/ui/ScrollReveal";
 
 const brands = [
   "TechCorp",

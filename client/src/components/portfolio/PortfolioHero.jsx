@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import { useRef, useMemo } from "react";
 
 const easePremium = [0.22, 1, 0.36, 1];

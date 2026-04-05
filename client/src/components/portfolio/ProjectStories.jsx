@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, Zap, Trophy, Users, Sparkles, MapPin, Umbrella } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { EVENTS } from "./EventGrid"; // Reusing the data

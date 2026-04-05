@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Star, User } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star} from "lucide-react";
 import { useEffect, useState } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Card } from "@/components/ui/Card";

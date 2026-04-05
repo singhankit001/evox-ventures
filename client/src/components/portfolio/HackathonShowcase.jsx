@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Code2, Cpu, Zap, GitBranch, Terminal } from "lucide-react";
 

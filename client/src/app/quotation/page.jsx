@@ -70,7 +70,7 @@ const BUDGET_TIERS = [
 ];
 
 export default function QuotationPage() {
-  const [step, setStep] = useState(1);
+
   const [formData, setFormData] = useState({
     eventType: "wedding",
     guests: "50-100",

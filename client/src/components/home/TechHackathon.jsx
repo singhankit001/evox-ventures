@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cpu, Zap, Globe, Sparkles, Activity, Code2, Terminal as TerminalIcon } from "lucide-react";
-import { Card } from "@/components/ui/Card";
+import { Cpu, Zap, Activity, Terminal as } from "lucide-react";
 import Image from "next/image";
 import { WordReveal } from "@/components/ui/ScrollReveal";
 

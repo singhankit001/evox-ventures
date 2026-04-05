@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  MessageCircle, X, Send, Loader2, CheckCircle2,
+  X, Send, Loader2, CheckCircle2,
   Sparkles, Phone, Mail, User, ArrowRight, ExternalLink,
   Building2, Music2, UtensilsCrossed, Tent, IndianRupee, RotateCcw
 } from "lucide-react";

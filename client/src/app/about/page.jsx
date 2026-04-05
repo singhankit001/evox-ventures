@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Sparkles, Target, Trophy, Shield, Users, ArrowRight, Zap, Globe } from "lucide-react";
+import { Sparkles, Target, Shield, Globe } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 const easePremium = [0.22, 1, 0.36, 1];
