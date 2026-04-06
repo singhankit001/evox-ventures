@@ -68,7 +68,7 @@ export default function ContactForm() {
             </div>
             <h3 className="mb-6 text-3xl font-black text-white tracking-tighter uppercase italic">Inquiry Received</h3>
             <p className="text-zinc-500 max-w-sm mb-12 font-light">
-              Your message has been encrypted and delivered to our concierge. We will reach out shortly to discuss your vision.
+              We have received your message. Our team will reach out to you shortly to discuss your event.
             </p>
             <button 
               onClick={() => {
@@ -77,7 +77,7 @@ export default function ContactForm() {
               }}
               className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500 hover:text-white transition-colors"
             >
-              Initiate New Inquiry
+              Send Another Inquiry
             </button>
           </motion.div>
         ) : (
@@ -90,7 +90,7 @@ export default function ContactForm() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="flex flex-col gap-3 group">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Nominal Identity *</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Full Name *</label>
                 <input
                   type="text"
                   name="name"
@@ -98,11 +98,11 @@ export default function ContactForm() {
                   onChange={handleChange}
                   disabled={status === "loading"}
                   className="w-full bg-transparent border-b border-white/10 py-4 text-white placeholder:text-zinc-700 focus:border-orange-500 focus:outline-none transition-all font-light text-lg"
-                  placeholder="e.g. Alexander Sterling"
+                  placeholder="Enter your name"
                 />
               </div>
               <div className="flex flex-col gap-3 group">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Digital Address *</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Email Address *</label>
                 <input
                   type="email"
                   name="email"
@@ -110,14 +110,14 @@ export default function ContactForm() {
                   onChange={handleChange}
                   disabled={status === "loading"}
                   className="w-full bg-transparent border-b border-white/10 py-4 text-white placeholder:text-zinc-700 focus:border-orange-500 focus:outline-none transition-all font-light text-lg"
-                  placeholder="alexander@domain.com"
+                  placeholder="Enter your email"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="flex flex-col gap-3 group">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Event Vertical</label>
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Event Type</label>
                 <select
                   name="eventType"
                   value={formData.eventType}
@@ -125,29 +125,34 @@ export default function ContactForm() {
                   disabled={status === "loading"}
                   className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:border-orange-500 focus:outline-none transition-all font-light text-lg appearance-none cursor-pointer"
                 >
-                  <option value="" className="bg-[#030303] text-zinc-600">Select Architecture...</option>
-                  <option value="Corporate" className="bg-[#030303]">Corporate Summit</option>
-                  <option value="Sports" className="bg-[#030303]">Sports Management</option>
-                  <option value="Social" className="bg-[#030303]">Social Gathering</option>
-                  <option value="Travel" className="bg-[#030303]">Travel Retreat</option>
+                  <option value="" className="bg-[#030303] text-zinc-600">Select Event Type</option>
+                  <option value="Wedding" className="bg-[#030303]">Wedding</option>
+                  <option value="Corporate" className="bg-[#030303]">Corporate Event</option>
+                  <option value="Party" className="bg-[#030303]">Party</option>
+                  <option value="Sports" className="bg-[#030303]">Sports Event</option>
+                  <option value="Other" className="bg-[#030303]">Other</option>
                 </select>
               </div>
               <div className="flex flex-col gap-3 group">
-                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Fiscal Allocation</label>
-                <input
-                  type="text"
+                <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Budget</label>
+                <select
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
                   disabled={status === "loading"}
-                  className="w-full bg-transparent border-b border-white/10 py-4 text-white placeholder:text-zinc-700 focus:border-orange-500 focus:outline-none transition-all font-light text-lg"
-                  placeholder="e.g. $50k+"
-                />
+                  className="w-full bg-transparent border-b border-white/10 py-4 text-white focus:border-orange-500 focus:outline-none transition-all font-light text-lg appearance-none cursor-pointer"
+                >
+                  <option value="" className="bg-[#030303] text-zinc-600">Select Budget Range</option>
+                  <option value="₹80k" className="bg-[#030303]">₹80,000</option>
+                  <option value="₹4L" className="bg-[#030303]">₹4,00,000</option>
+                  <option value="₹8L" className="bg-[#030303]">₹8,00,000</option>
+                  <option value="₹40L+" className="bg-[#030303]">₹40,00,000+</option>
+                </select>
               </div>
             </div>
 
             <div className="flex flex-col gap-3 group">
-              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Narrative Brief *</label>
+              <label className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 group-focus-within:text-orange-500 transition-colors">Project Details *</label>
               <textarea
                 name="message"
                 rows={4}
@@ -155,7 +160,7 @@ export default function ContactForm() {
                 onChange={handleChange}
                 disabled={status === "loading"}
                 className="w-full resize-none bg-transparent border-b border-white/10 py-4 text-white placeholder:text-zinc-700 focus:border-orange-500 focus:outline-none transition-all font-light text-lg"
-                placeholder="Describe your vision in detail..."
+                placeholder="Tell us about your event..."
               />
             </div>
 
@@ -180,7 +185,7 @@ export default function ContactForm() {
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
                   <>
-                    <span className="mr-3">Deliver Strategy</span>
+                    <span className="mr-3">Send Inquiry</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
                   </>
                 )}
