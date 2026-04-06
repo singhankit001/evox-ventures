@@ -2,120 +2,101 @@
 
 <img src="./client/public/screenshots/homepage.png" alt="Evox Ventures Premium Header" width="100%" style="border-radius: 12px; margin-bottom: 2rem;" />
 
-# Evox Ventures
+# 💎 Evox Ventures
+### Engineering Unforgettable Experiences
 
-**Engineering premium, cinematic event experiences.**
-
-*An elite digital platform transforming the way high-stakes live experiences are deployed, showcased, and managed.*
+**An elite digital platform transforming the way high-stakes live experiences are architected and managed.**
 
 <br/>
 
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://evox-ventures.vercel.app)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-[![View Live](https://img.shields.io/badge/🔴_LIVE_DEMO-Visit_Site-FF4500?style=for-the-badge&logoColor=white)](#)
+<br/>
+
+[**🚀 View Live Demo**](https://evox-ventures.vercel.app) • [**📂 Documentation**](#-overview) • [**🎯 Project Roadmap**](#-roadmap--future-improvements)
+
+---
 
 </div>
 
 <br/>
 
-## 🌟 Overview
-Evox Ventures is a luxury event architecture agency specializing in world-class execution. This repository houses our monolithic full-stack digital experience. It features heavy interactive web architectures, smooth hardware-accelerated animations, and highly performant page layouts designed to impress top-tier clients at first glance.
+## 🌐 Live Demo
+The flagship experience is live and deployed with continuous integration:
+👉 **[evox-ventures.vercel.app](https://evox-ventures.vercel.app)**
 
 ---
 
-## ✨ Features
+## 🌟 Overview
+Evox Ventures is a luxury event architecture agency specializing in high-fidelity execution. This repository houses our monolithic full-stack digital experience—featuring immersive web architectures, hardware-accelerated animations, and production-grade performance designed to captivate elite clients.
 
-- 🎭 **Cinematic Scroll Storytelling UI**: Hardware-accelerated transitions that engage users dynamically.
-- 💎 **Premium Luxury Design System**: Glassmorphic elements, dynamic noise textures, and a custom cinematic aesthetic.
-- 📸 **Global Event Showcase**: Immersive visual layouts for elite corporate events, hackathons, and luxury wellness retreats.
-- ✨ **Interactive Hero Animations**: Staggered typography reveals and depth-layered magnetic interactions.
-- 💰 **Quote Generation System**: Real-time budget estimator for VIP clients to dynamically gauge project scope.
-- ⚡ **Highly Responsive & Performant**: Server-side rendered architecture guaranteeing 0-lag experiences across desktop and mobile.
-- 🌀 **Zero-Friction Scroll**: Built with state-of-the-art Lenis scrolling and Framer Motion primitives.
+---
+
+## 🚀 Key Features
+
+- 🎭 **Cinematic Storytelling**: Hardware-accelerated transitions and scroll-driven narratives using Lenis & Framer Motion.
+- 💎 **Luxury Design System**: Glassmorphic UI components, dynamic noise textures, and a custom-curated cinematic aesthetic.
+- 📸 **Immersive Showcases**: Interactive visual layouts for global corporate events, tech hackathons, and luxury retreats.
+- 💰 **Concierge AI & Quote Engine**: A sophisticated multi-step quote generation system for real-time project scoping.
+- ⚡ **Production-Grade Performance**: Edge-optimized architecture ensuring sub-second interactions across all devices.
+- 📱 **Adaptive Continuity**: Seamless, premium experience across mobile, tablet, and desktop viewports.
 
 ---
 
 ## 🛠️ Tech Stack
 
-Built relying on robust, modern tooling tailored for velocity and performance:
+Built with a commitment to engineering excellence and visual depth:
 
-- **Framework:** Next.js (App Router)
-- **Library:** React
-- **Styling:** TailwindCSS, Vanilla CSS Modules
-- **Animations:** Framer Motion, GSAP
-- **Core Language:** JavaScript & Transpiled TypeScript Ecosystem
+- **Frontend:** [Next.js 15+](https://nextjs.org/) (App Router), [React 19](https://reactjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/), Modern CSS Variables
+- **Motion:** [Framer Motion](https://www.framer.com/motion/), [Lenis Smooth Scroll](https://lenis.darkroom.engineering/)
+- **Backend:** Next.js Server Actions & API Routes
+- **Infrastructure:** Vercel (Edge Functions, CI/CD)
 
 ---
 
-## 🏗️ Project Structure
-The repository is structured to scale dynamically while remaining declarative and highly maintainable:
+## 📂 Project Architecture
 
 ```text
 evox-ventures/
-├── client/                 # Next.js Application Root
+├── client/                 # Next.js Production Core
 │   ├── src/
-│   │   ├── app/            # App Router: Pages, Layouts, APIs
-│   │   ├── components/     # UI Design System
-│   │   │   ├── home/       # Landing modular units
-│   │   │   ├── layout/     # Footers, Navbars, Global CTAs
-│   │   │   ├── portfolio/  # Case studies & Event Showcase
-│   │   │   └── ui/         # Base atoms (Cards, Buttons, Reveals)
-│   │   └── lib/            # Utilities and configurations
-│   └── public/             # Static Assets & premium cinematography
+│   │   ├── app/            # App Router: Core Pages & API endpoints
+│   │   ├── components/     # Atomic Design System
+│   │   │   ├── home/       # Modular Landing Sections
+│   │   │   ├── layout/     # Master Layout Structures
+│   │   │   ├── portfolio/  # Case Study Architectures
+│   │   │   └── ui/         # Premium UI Components (Particles, Reveals)
+│   │   └── lib/            # Shared Logic & Providers
+│   └── public/             # High-Fidelity Assets & Cinematography
 ```
 
 ---
 
-## 🚀 Installation & Setup
-
-We recommend utilizing the standard Node ecosystem to bootstrap the application.
-
-**1. Clone the Repository:**
-```bash
-git clone https://github.com/singhankit001/evox-ventures.git
-cd evox-ventures/client
-```
-
-**2. Install Dependencies:**
-```bash
-npm install
-```
-
-**3. Run the Development Server:**
-```bash
-npm run dev
-```
-
-The application will be synchronously bound at `http://localhost:3000`.
-
----
-
-## 🛸 Roadmap & Future Improvements
-We continuously push boundaries. Upcoming strategic initiatives include:
-
-- [ ] **AI-Powered Event Analytics:** Intelligent recommendations for scaled audiences.
-- [ ] **Automated CRM & Real-Time Booking:** Connect directly into sales pipelines.
-- [ ] **WhatsApp Webhook Integrations:** Automated client status pushes.
-- [ ] **Administrative Dashboard:** Deep control configuration of CMS data.
-- [ ] **Secure Payment Gateways:** Immediate retainer deposit processing.
-
----
-
-## 📸 Snapshots
+## 📸 Preview Section
 
 <div align="center">
-  <img src="./client/public/screenshots/events.png" width="48%" style="border-radius:10px; margin:1%;" alt="Events Page" />
-  <img src="./client/public/screenshots/hackathon.png" width="48%" style="border-radius:10px; margin:1%;" alt="Hackathon Gallery" />
+  <img src="./client/public/screenshots/events.png" width="48%" style="border-radius:12px; border: 1px solid rgba(255,255,255,0.1); margin:1%;" alt="Events Page" />
+  <img src="./client/public/screenshots/hackathon.png" width="48%" style="border-radius:12px; border: 1px solid rgba(255,255,255,0.1); margin:1%;" alt="Hackathon Gallery" />
 </div>
 
 ---
 
+## ⚡ Deployment & CI/CD
+The project is architected for **Continuous Deployment** on Vercel. Every push to the `main` branch undergoes an automated production build and health check before going live.
+
+- **Platform:** [Vercel](https://vercel.com)
+- **Environment:** Production (Edge)
+- **Continuous Integration:** GitHub Actions / Vercel Hooks
+
+---
+
 ## 🤝 Contributing
-Want to supercharge the Evox ecosystem? We're open to contributions. Read our complete guide in [CONTRIBUTING.md](CONTRIBUTING.md) to get started with creating PRs and following our strict architectural guidelines.
+Interested in elevating the Evox ecosystem? We welcome high-impact contributions. Review our [CONTRIBUTING.md](CONTRIBUTING.md) for architectural standards and PR workflows.
 
 ---
 
