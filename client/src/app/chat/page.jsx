@@ -1,6 +1,6 @@
-import PremiumChatBox from "@/components/chat/PremiumChatBox";
+import Chatbot from "@/components/ui/Chatbot";
 
 export default function ChatPage() {
-  return <PremiumChatBox />;
+  return <Chatbot />;
 }
 

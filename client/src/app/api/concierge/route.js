@@ -2,9 +2,18 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 
 // ─── OpenAI Configuration ───────────────────────────────────────────────────
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// We leave this as null here to avoid build errors if the API key is missing.
+// It will be initialized inside the handler.
+let openai = null;
+
+function getOpenAI() {
+  if (!openai && process.env.OPENAI_API_KEY) {
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+  return openai;
+}
 
 // ─── Pricing Engine ──────────────────────────────────────────────────────────
 const BASE_PRICING = {
@@ -120,6 +129,9 @@ function getRuleBasedReply(messages, sessionData) {
 
 // ─── OpenAI Handler ───────────────────────────────────────────────────────────
 async function getAIReply(messages, sessionData) {
+  const client = getOpenAI();
+  if (!client) throw new Error("OpenAI not configured");
+
   const systemPrompt = `You are the Evox Concierge — a premium luxury event planning AI for Evox Ventures India.
 
 Persona: Confident, warm, luxury-focused. Short, elegant responses. No filler.
@@ -138,7 +150,7 @@ When ALL 5 collected, say "That sounds like a stunning event..." and set complet
 ALWAYS respond as JSON: { "reply": string, "sessionData": { "eventType": null, "guests": null, "location": null, "date": null, "budget": null }, "complete": boolean }
 Keep replies under 50 words.`;
 
-  const response = await openai.chat.completions.create({
+  const response = await client.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{ role: "system", content: systemPrompt }, ...messages],
     response_format: { type: "json_object" },

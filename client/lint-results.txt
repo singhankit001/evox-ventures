@@ -1,0 +1,208 @@
+
+> client@0.1.0 lint
+> eslint
+
+
+/Users/ankitsingh/evox-ventures/client/src/app/about/page.jsx
+  5:28  warning  'Trophy' is defined but never used      @typescript-eslint/no-unused-vars
+  5:44  warning  'Users' is defined but never used       @typescript-eslint/no-unused-vars
+  5:51  warning  'ArrowRight' is defined but never used  @typescript-eslint/no-unused-vars
+  5:63  warning  'Zap' is defined but never used         @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/app/api/concierge/route.js
+  10:7  warning  'BASE_PRICING' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/app/portfolio/page.jsx
+  5:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/app/quotation/page.jsx
+   3:29  warning  'useEffect' is defined but never used         @typescript-eslint/no-unused-vars
+   4:18  warning  'AnimatePresence' is defined but never used   @typescript-eslint/no-unused-vars
+   6:3   warning  'ArrowRight' is defined but never used        @typescript-eslint/no-unused-vars
+   6:15  warning  'Check' is defined but never used             @typescript-eslint/no-unused-vars
+   6:22  warning  'ChevronRight' is defined but never used      @typescript-eslint/no-unused-vars
+   6:36  warning  'LayoutGrid' is defined but never used        @typescript-eslint/no-unused-vars
+   7:3   warning  'Users' is defined but never used             @typescript-eslint/no-unused-vars
+   7:10  warning  'MapPin' is defined but never used            @typescript-eslint/no-unused-vars
+   7:18  warning  'Calculator' is defined but never used        @typescript-eslint/no-unused-vars
+   8:8   warning  'Clock' is defined but never used             @typescript-eslint/no-unused-vars
+   8:15  warning  'Crown' is defined but never used             @typescript-eslint/no-unused-vars
+  73:10  warning  'step' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  73:16  warning  'setStep' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/EventsShowcase.jsx
+  6:8  warning  'ScrollReveal' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/EvoxJourney.jsx
+  3:29  warning  'useTransform' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/FinalCta.jsx
+  17:16  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/Hero.jsx
+   4:22  warning  'Zap' is defined but never used                 @typescript-eslint/no-unused-vars
+   4:27  warning  'Globe' is defined but never used               @typescript-eslint/no-unused-vars
+  54:9   warning  'frontXNeg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  55:9   warning  'frontYNeg' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/ServicesSection.jsx
+  6:8  warning  'ScrollReveal' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/StatsSection.jsx
+  5:8  warning  'ScrollReveal' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/TechHackathon.jsx
+    4:20  warning  'Globe' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+    4:27  warning  'Sparkles' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+    4:47  warning  'Code2' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+    4:66  warning  'TerminalIcon' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+    5:10  warning  'Card' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+    7:10  warning  'WordReveal' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+  113:23  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  111 |             className="absolute w-1 h-1 bg-orange-400 rounded-full"
+  112 |             style={{
+> 113 |               top: `${Math.random() * 100}%`,
+      |                       ^^^^^^^^^^^^^ Cannot call impure function
+  114 |               left: `${Math.random() * 100}%`,
+  115 |             }}
+  116 |             animate={{  react-hooks/purity
+  114:24  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  112 |             style={{
+  113 |               top: `${Math.random() * 100}%`,
+> 114 |               left: `${Math.random() * 100}%`,
+      |                        ^^^^^^^^^^^^^ Cannot call impure function
+  115 |             }}
+  116 |             animate={{
+  117 |               y: [0, -40, 0],                                       react-hooks/purity
+  121:29  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  119 |             }}
+  120 |             transition={{
+> 121 |               duration: 5 + Math.random() * 5,
+      |                             ^^^^^^^^^^^^^ Cannot call impure function
+  122 |               repeat: Infinity,
+  123 |               ease: "easeInOut",
+  124 |               delay: i * 0.5,                                 react-hooks/purity
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/TestimonialsCarousel.jsx
+    4:37  warning  'Quote' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+    4:50  warning  'User' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+   58:23  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  56 |             className="absolute w-1 h-1 bg-orange-400 rounded-full"
+  57 |             style={{
+> 58 |               top: `${Math.random() * 100}%`,
+     |                       ^^^^^^^^^^^^^ Cannot call impure function
+  59 |               left: `${Math.random() * 100}%`,
+  60 |             }}
+  61 |             animate={{  react-hooks/purity
+   59:24  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  57 |             style={{
+  58 |               top: `${Math.random() * 100}%`,
+> 59 |               left: `${Math.random() * 100}%`,
+     |                        ^^^^^^^^^^^^^ Cannot call impure function
+  60 |             }}
+  61 |             animate={{
+  62 |               y: [0, -30, 0],                                       react-hooks/purity
+   66:29  error    Error: Cannot call impure function during render
+
+`Math.random` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  64 |             }}
+  65 |             transition={{
+> 66 |               duration: 4 + Math.random() * 4,
+     |                             ^^^^^^^^^^^^^ Cannot call impure function
+  67 |               repeat: Infinity,
+  68 |               ease: "easeInOut",
+  69 |               delay: idx * 0.3,                               react-hooks/purity
+  144:23  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                         @next/next/no-img-element
+
+/Users/ankitsingh/evox-ventures/client/src/components/home/TrustedBy.jsx
+  4:8   warning  'ScrollReveal' is defined but never used         @typescript-eslint/no-unused-vars
+  4:24  warning  'ScrollRevealStagger' is defined but never used  @typescript-eslint/no-unused-vars
+  4:45  warning  'itemReveal' is defined but never used           @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/portfolio/EventGrid.jsx
+    6:24  warning  'ScrollRevealStagger' is defined but never used  @typescript-eslint/no-unused-vars
+  239:9   warning  'reduced' is assigned a value but never used     @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/portfolio/HackathonShowcase.jsx
+  4:39  warning  'useMemo' is defined but never used              @typescript-eslint/no-unused-vars
+  8:7   warning  'CODE_LINES' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/portfolio/PortfolioHero.jsx
+  4:10  warning  'ChevronDown' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/portfolio/ProjectStories.jsx
+   3:43  warning  'useSpring' is defined but never used  @typescript-eslint/no-unused-vars
+   4:18  warning  'useState' is defined but never used   @typescript-eslint/no-unused-vars
+   6:8   warning  'Link' is defined but never used       @typescript-eslint/no-unused-vars
+  20:32  warning  'index' is defined but never used      @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/ui/Chatbot.jsx
+    6:3   warning  'MessageCircle' is defined but never used  @typescript-eslint/no-unused-vars
+    6:36  warning  'CheckCircle2' is defined but never used   @typescript-eslint/no-unused-vars
+   90:31  warning  'index' is defined but never used          @typescript-eslint/no-unused-vars
+  270:14  warning  'err' is defined but never used            @typescript-eslint/no-unused-vars
+  300:14  warning  '_' is defined but never used              @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/ui/ContactForm.jsx
+  4:10  warning  'Send' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/ui/LogoIntro.jsx
+  17:14  warning  '_' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  19:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  17 |     } catch (_) {}
+  18 |
+> 19 |     setVisible(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  20 |
+  21 |     // Sequence: enter(1.0s) → glow(0.8s) → exit(0.7s)
+  22 |     const t1 = setTimeout(() => setPhase("glow"), 1000);  react-hooks/set-state-in-effect
+  26:64  warning  '_' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+
+/Users/ankitsingh/evox-ventures/client/src/components/ui/ParticleField.jsx
+   55:37  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `makeParticle`, but the source dependencies were [count, shouldReduceMotion, color]. Inferred different dependency than source.
+
+  53 |   }
+  54 |
+> 55 |   const initParticles = useCallback((w, h) => {
+     |                                     ^^^^^^^^^^^
+> 56 |     const isMobile = w < 768;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 57 |     const cap = shouldReduceMotion ? 0 : isMobile ? Math.min(20, count) : Math.min(60, count);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 58 |     particles.current = Array.from({ length: cap }, () => makeParticle(w, h));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 59 |   }, [count, shouldReduceMotion, color]);
+     | ^^^^ Could not preserve existing manual memoization
+  60 |
+  61 |   useEffect(() => {
+  62 |     const canvas = canvasRef.current;  react-hooks/preserve-manual-memoization
+   59:6   warning  React Hook useCallback has a missing dependency: 'makeParticle'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+  105:6   warning  React Hook useEffect has a missing dependency: 'updateParticle'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+
+✖ 67 problems (9 errors, 58 warnings)
+

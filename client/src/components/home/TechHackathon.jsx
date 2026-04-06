@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cpu, Zap, Activity, Terminal as } from "lucide-react";
+import { Cpu, Zap, Activity } from "lucide-react";
 import Image from "next/image";
 import { WordReveal } from "@/components/ui/ScrollReveal";
 
