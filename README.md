@@ -95,9 +95,6 @@ The project is architected for **Continuous Deployment** on Vercel. Every push t
 
 ---
 
-## 🤝 Contributing
-Interested in elevating the Evox ecosystem? We welcome high-impact contributions. Review our [CONTRIBUTING.md](CONTRIBUTING.md) for architectural standards and PR workflows.
-
 ---
 
 ## 🛡️ License
