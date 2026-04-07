@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="./client/public/screenshots/homepage.png" alt="Evox Ventures Premium Header" width="100%" style="border-radius: 12px; margin-bottom: 2rem;" />
 
 # 💎 Evox Ventures
 ### Engineering Unforgettable Experiences
