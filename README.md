@@ -101,7 +101,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
-<div align="center">
-  <strong>Architected & Maintained by <br/><a href="https://github.com/singhankit001">Ankit Singh</a></strong><br/>
-  High-Performance Software Engineer
-</div>
